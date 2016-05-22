@@ -3,7 +3,7 @@ CREATE SCHEMA BuyVision;
 USE BuyVision;
 
 CREATE TABLE `Produkt` (
-`Produktnummer` VARCHAR(20) PRIMARY KEY,
+`Produktnummer` INT PRIMARY KEY,
 `Hersteller` VARCHAR(20) NOT NULL,
 `Bio` BOOLEAN DEFAULT FALSE,
 `Preis` DOUBLE NOT NULL,
