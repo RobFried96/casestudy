@@ -2,38 +2,50 @@ DROP SCHEMA IF EXISTS BuyVision;
 CREATE SCHEMA BuyVision;
 USE BuyVision;
 
+CREATE TABLE `Preis` (
+`Zeit` TIMESTAMP PRIMARY KEY,
+`Höhe` DOUBLE
+);
+
 CREATE TABLE `Produkt` (
 `Produktnummer` INT PRIMARY KEY,
 `Hersteller` VARCHAR(20) NOT NULL,
 `Bio` BOOLEAN DEFAULT FALSE,
-`Preis` DOUBLE NOT NULL,
 `Verpackungseinheit` VARCHAR(20),
-`Substitut` VARCHAR(20)
+`Preis_Zeit` TIMESTAMP,
+FOREIGN KEY (Preis_Zeit) REFERENCES Preis(Zeit)
+);
+
+CREATE TABLE `Substitut` (
+`Produktnummer` INT PRIMARY KEY,
+`Hersteller` VARCHAR(20) NOT NULL,
+`Bio` BOOLEAN DEFAULT FALSE,
+`Verpackungseinheit` VARCHAR(20),
+`Preis_Zeit` TIMESTAMP,
+FOREIGN KEY (Preis_Zeit) REFERENCES Preis(Zeit)
+);
+
+CREATE TABLE `Kette` (
+`Name` VARCHAR(20) PRIMARY KEY
 );
 
 CREATE TABLE `Supermarkt` (
 `Supermarkt_ID` INT PRIMARY KEY,
 `Name` VARCHAR(20) NOT NULL,
-`Kette` VARCHAR(20) NOT NULL,
 `Adresse_Straße` VARCHAR(20) NOT NULL,
 `Adresse_PLZ` INT NOT NULL,
 `Adresse_Ort` VARCHAR(20) NOT NULL,
-`Adresse_Land` VARCHAR(20) DEFAULT 'Deutschland'
+`Adresse_Land` VARCHAR(20) DEFAULT 'Deutschland',
+`Kette_Name` VARCHAR(20) NOT NULL,
+FOREIGN KEY (Kette_Name) REFERENCES Kette(Name)
 );
+
 
 CREATE TABLE `Einkaufszettel` (
 `User_ID` INT PRIMARY KEY,
-`Supermarkt_ID` INT NOT NULL,
-`Produktnummer` INT NOT NULL,
 `Anzahl_Maerkte` INT NOT NULL,
 `Gesamtpreis` DOUBLE NOT NULL,
 `Kilometer` DOUBLE
-);
-
-CREATE TABLE `Authentisierung` (
-`User_ID` INT PRIMARY KEY,
-`Anmeldedaten_Benutzername` VARCHAR(20) NOT NULL DEFAULT 'root',
-`Anmeldedaten_Passwort` VARCHAR(20) NOT NULL DEFAULT 'root' 
 );
 
 CREATE TABLE `User` (
@@ -48,7 +60,18 @@ CREATE TABLE `User` (
 `Bankdaten_BIC` INT,
 `Bankdaten_IBAN` INT,
 `Authentisierung_User_ID` INT,
-FOREIGN KEY (Authentisierung_User_ID) REFERENCES Authentisierung(User_ID)
+`Anmeldedaten_Benutzername` VARCHAR(20) NOT NULL DEFAULT 'root',
+`Anmeldedaten_Passwort` VARCHAR(20) NOT NULL DEFAULT 'root' 
+);
+
+CREATE TABLE `Statistics` (
+`Browser` ENUM('Firefox','IE','Opera','Chrome','Safari','Others') not null default 'Others',
+`Version` FLOAT NOT NULL,
+`IP` varchar(40) NOT NULL,
+`DateandTime` DATETIME NOT NULL,
+`Referer` VARCHAR(2000),
+`User_User_ID` INT,
+FOREIGN KEY (User_User_ID) REFERENCES User(User_ID)
 );
 
 CREATE TABLE `User_has_Einkaufszettel` (
@@ -70,11 +93,19 @@ FOREIGN KEY (Supermarkt_Supermarkt_ID) REFERENCES Supermarkt(Supermarkt_ID)
 CREATE TABLE `Einkaufszettel_has_Produkt` (
 `Produkt_Produktnummer` INT,
 `Einkaufszettel_User_ID` INT,
+`Eingekauft` BOOLEAN DEFAULT FALSE,
+`Menge` INT,
+`Einheit` VARCHAR(10),
+`Supermarkt_ID` INT,
 PRIMARY KEY(Produkt_Produktnummer, Einkaufszettel_User_ID),
 FOREIGN KEY (Produkt_Produktnummer) REFERENCES Produkt(Produktnummer),
 FOREIGN KEY (Einkaufszettel_User_ID) REFERENCES Einkaufszettel(User_ID)
 );
 
-
-
-
+CREATE TABLE `Produkt_has_Substitut` (
+`Produkt_Produktnummer` INT,
+`Substitut_Produktnummer` INT,
+PRIMARY KEY (Produkt_Produktnummer, Substitut_Produktnummer),
+FOREIGN KEY (Produkt_Produktnummer) REFERENCES Produkt(Produktnummer),
+FOREIGN KEY (Substitut_Produktnummer) REFERENCES Substitut(Produktnummer)
+);
