@@ -3,7 +3,7 @@ CREATE SCHEMA BuyVision;
 USE BuyVision;
 
 CREATE TABLE `Preis` (
-`Zeit` TIMESTAMP PRIMARY KEY,
+`Zeit` TIMESTAMP PRIMARY KEY CHECK(VALUE < CURRENT_TIMESTAMP),
 `Höhe` DOUBLE
 );
 
@@ -60,8 +60,8 @@ CREATE TABLE `User` (
 `Adresse_PLZ` INT NOT NULL,
 `Adresse_Ort` VARCHAR(20) NOT NULL,
 `Adresse_Land` VARCHAR(20) NOT NULL DEFAULT 'Deutschland',
-`Bankdaten_BIC` INT,
-`Bankdaten_IBAN` INT,
+`Bankdaten_BIC` BIGINT,
+`Bankdaten_IBAN` BIGINT,
 `Authentisierung_User_ID` INT,
 `Anmeldedaten_Benutzername` VARCHAR(20) NOT NULL DEFAULT 'root',
 `Anmeldedaten_Passwort` VARCHAR(20) NOT NULL DEFAULT 'root' 
@@ -71,7 +71,7 @@ CREATE TABLE `Statistics` (
 `Browser` ENUM('Firefox','IE','Opera','Chrome','Safari','Others') NOT NULL DEFAULT 'Others',
 `Version` FLOAT NOT NULL,
 `IP` varchar(40) NOT NULL,
-`DateandTime` DATETIME NOT NULL,
+`DateandTime` DATETIME NOT NULL CHECK(VALUE < CURRENT_TIMESTAMP),
 `Referer` VARCHAR(2000),
 `User_User_ID` INT,
 FOREIGN KEY (User_User_ID) REFERENCES User(User_ID)
@@ -101,10 +101,10 @@ ON DELETE CASCADE ON UPDATE CASCADE
 CREATE TABLE `Einkaufszettel_has_Produkt` (
 `Produkt_Produktnummer` INT,
 `Einkaufszettel_User_ID` INT,
-`Eingekauft` BOOLEAN DEFAULT FALSE,
-`Menge` INT,
+`Eingekauft` BOOLEAN DEFAULT FALSE NOT NULL,
+`Menge` INT NOT NULL,
+`Supermarkt_ID` INT NOT NULL,
 `Einheit` VARCHAR(10),
-`Supermarkt_ID` INT,
 PRIMARY KEY(Produkt_Produktnummer, Einkaufszettel_User_ID),
 FOREIGN KEY (Produkt_Produktnummer) REFERENCES Produkt(Produktnummer)
 ON DELETE CASCADE ON UPDATE CASCADE,
@@ -121,3 +121,4 @@ ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY (Substitut_Produktnummer) REFERENCES Substitut(Produktnummer)
 ON DELETE CASCADE ON UPDATE CASCADE
 );
+
