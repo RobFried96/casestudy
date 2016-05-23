@@ -65,7 +65,7 @@ CREATE TABLE `User` (
 );
 
 CREATE TABLE `Statistics` (
-`Browser` ENUM('Firefox','IE','Opera','Chrome','Safari','Others') not null default 'Others',
+`Browser` ENUM('Firefox','IE','Opera','Chrome','Safari','Others') NOT NULL DEFAULT 'Others',
 `Version` FLOAT NOT NULL,
 `IP` varchar(40) NOT NULL,
 `DateandTime` DATETIME NOT NULL,
