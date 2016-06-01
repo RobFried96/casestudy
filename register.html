@@ -1,0 +1,93 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+    <title>Buyvision Registrierung</title>
+
+    <link rel="stylesheet" type="text/css" href="register.css">
+
+</head>
+
+<body>
+
+  <div id="topbar">
+
+      <a href="startseite.html"><img id="logo" src="images/logo.PNG"></a>
+
+      <p id="titelEins">BuyVision</p>
+
+      <p id="titelZwei">Shopping Guide</p>
+
+  </div>
+
+    <div id="middleLine">
+
+      <p>Bitte f&uuml;llen Sie das Formular aus:
+
+    </div>
+
+    <div id="content">
+
+        <form>
+
+        <label>Name</label>
+        <input type="text" id="name" name="name" placeholder="Max" required>
+
+        <label>Vorname</label>
+        <input type="text" id="vorname" name="vorname" placeholder="Mustermann" required>
+
+        <label>E-Mail Adresse</label>
+        <input type="email" id="email_addr" name="email_addr" placeholder="max.mustermann@mustermail.de" required>
+
+        <label>E-Mail Adresse wiederholen</label>
+        <input type="email" id="repeat_email_addr" name="repeat_email_addr" placeholder="max.mustermann@mustermail.de" required oninput="check(this)">
+
+        <label>Passwort</label>
+        <input type="password" id="passwort"  required>
+
+        <label>Passwort wiederholen</label>
+        <input type="password" id="repeat_passwort"  required oninput="check2(this)">
+
+        <input type="submit" value="Abschicken" />
+
+      </form>
+
+      <script>
+      function check(input) {
+        if (input.value != document.getElementById('email_addr').value) {
+          input.setCustomValidity('Fehler');
+        } else {
+          // wenn der Wert zulässig ist, werden die Felder zurückgesetzt
+          input.setCustomValidity('');
+        }
+      }
+      </script>
+
+      <script>
+      function check2(input) {
+        if (input.value != document.getElementById('passwort').value) {
+          input.setCustomValidity('Fehler');
+        } else {
+          // wenn der Wert zulässig ist, werden die Felder zurückgesetzt
+          input.setCustomValidity('');
+        }
+      }
+      </script>
+
+
+
+    </div>
+
+    <div id="bottom">
+
+        <p id="copy">&copy; BuyVision</p>
+
+    </div>
+
+</body>
+
+</html>

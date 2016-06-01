@@ -1,0 +1,150 @@
+body {
+
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+
+}
+
+#topbar {
+
+    position: fixed;
+    width: 100%;
+    height: 180px;
+
+}
+
+#logo {
+
+    margin-top: 40px;
+    width:120px;
+    position: relative;
+    left: 350px;
+    float:left;
+    z-index: 99;
+
+}
+
+#titelEins {
+
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 40px;
+    position: relative;
+    left:370px;
+    top:-5px;
+
+}
+
+#titelZwei {
+
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 40px;
+    position: relative;
+    left:370px;
+    top: -50px;
+
+}
+
+
+#middleLine {
+
+    background-color: #19E6F1;
+    width:1600px;
+    height:70px;
+    position: fixed;
+    top: 180px;
+
+}
+
+#middleLine p {
+
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 30px;
+    color:white;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    left: 690px;
+
+}
+
+
+#content {
+
+    background-color: #FFC000;
+    width:100%;
+    height:600px;
+    position: fixed;
+    top: 250px;
+
+}
+
+
+#bottom {
+
+    font-family: 'Open Sans Condensed', sans-serif;
+    background-color: grey;
+    width: 100%;
+    height: 30px;
+    position: fixed;
+    top:850px;
+
+}
+
+#copy {
+
+    font-weight: bold;
+    position: relative;
+    left: 350px;
+    top: -10px;
+
+}
+:invalid {
+  border-color: #e88;
+  border-width: 1.75px
+  -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
+  -moz-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+  -o-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+  -ms-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+}
+
+:required {
+  border-color: #18E7F0;
+  border-width: 1.75px;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .9);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .9);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 255, .9);
+  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .9);
+
+}
+
+form {
+  width:300px;
+  margin: 20px auto;
+}
+label{
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+input {
+  font-family: 'Open Sans Condensed', sans-serif;
+  border:1px solid #ccc;
+  font-size:20px;
+  width:300px;
+  min-height:30px;
+  display:block;
+  margin-bottom:15px;
+  margin-top:5px;
+  outline: none;
+
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  -o-border-radius:5px;
+  -ms-border-radius:5px;
+  border-radius:5px;
+}
+
+input[type=submit] {
+  background:grey;
+  padding:10px;
+}
