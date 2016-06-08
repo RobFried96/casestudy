@@ -1,93 +1,301 @@
-<!doctype html>
+<!DOCTYPE html>
 
-<html>
+<html lang="en">
+    
+  <head>
+      
+    <title>BuyVision Anmeldung</title>
+      
+    <meta charset="utf-8">
+      
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+      
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+      
     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+      
+      <style>
+          
+          .container {
+              
+              margin-top: 80px;
+              margin-bottom: 30px;
+              width: 50%;
+          }
+          
+          .form-group {
+              
+              margin-top: 20px;
+          }
+          
+          #zeileEins {
+              
+              float: right;
+          }
+          
+          #zeileZwei {
+              
+              float: right;
+          }
+          
+          #zeileDrei {
+              
+              float: right;
+          }
+          
+          body label:hover {
+              
+              font-weight: bold;
+          }
+          
+          #errorMessage {
+                
+              color: red;
+              font-size: 90% !important;
+          }
+            
+          #successMessage {
+                
+              color: green;
+              font-size: 90% !important;
+              display:none;
+              margin-bottom:20px;
+          }
+          
+      </style>
+      
+  </head>
+    
+  <body>
+      
+      <div id="successMessage">You've done it! Congratulations.</div>
+            
+      <div id="errorMessage"></div>
+      
+      <nav class="navbar navbar-light bg-faded navbar-fixed-top" id="navbar">
+            
+          <a class="navbar-brand" href="#" id="logo">BuyVision</a>
+            
+          <ul class="nav navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#jumbotron">Startseite <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">Über BuyVision</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#footer">Die App downloaden</a>
+            </li>
+          </ul>
+            
+          <form class="form-inline pull-xs-right">
+            <input class="form-control" type="email" placeholder="Email" style="width:240px">
+            <input class="form-control" type="password" placeholder="Passwort" style="width:240px">
+            <button class="btn btn-success" type="submit">Login</button>
+          </form>
+            
+        </nav>
+      
+      
+      <div class="container">
+      
+        <form id="anrede">
+            
+          <fieldset class="form-group">
+            <label for="anrede">Anrede</label>
+            <select class="form-control" id="anrede">
+              <option>Herr</option>
+              <option>Frau</option>
+            </select>
+          </fieldset>
+            
+        </form>
+          
+        <form class="form-inline">
+          <div class="form-group">
+            <input type="text" class="form-control" id="inputName">
+            <label for="exampleInputName2">Name</label>
+          </div>
+          <div class="form-group" id="zeileEins">
+            <label for="exampleInputEmail2">Nachname</label>
+            <input type="email" class="form-control" id="inputNachname">
+          </div>
+        </form>
+          
+        <form class="form-inline">
+          <div class="form-group">
+            <input type="text" class="form-control" id="inputStraße">
+            <label for="exampleInputName2">Straße</label>
+          </div>
+          <div class="form-group" id="zeileZwei">
+            <label or="exampleInputEmail2">Hausnummer</label>
+            <input type="number" class="form-control" id="inputHausnummer">
+          </div>
+        </form>
+          
+        <form class="form-inline">
+          <div class="form-group">
+            <input type="number" class="form-control" id="inputPLZ">
+            <label for="exampleInputName2">Postleitzahl</label>
+          </div>
+          <div class="form-group" id="zeileDrei">
+            <label for="exampleInputEmail2">Ort</label>
+            <input type="text" class="form-control" id="inputOrt">
+          </div>
+        </form>
 
-    <title>Buyvision Registrierung</title>
-
-    <link rel="stylesheet" type="text/css" href="register.css">
-
-</head>
-
-<body>
-
-  <div id="topbar">
-
-      <a href="startseite.html"><img id="logo" src="images/logo.PNG"></a>
-
-      <p id="titelEins">BuyVision</p>
-
-      <p id="titelZwei">Shopping Guide</p>
-
-  </div>
-
-    <div id="middleLine">
-
-      <p>Bitte f&uuml;llen Sie das Formular aus:
-
-    </div>
-
-    <div id="content">
-
-        <form>
-
-        <label>Name</label>
-        <input type="text" id="name" name="name" placeholder="Max" required>
-
-        <label>Vorname</label>
-        <input type="text" id="vorname" name="vorname" placeholder="Mustermann" required>
-
-        <label>E-Mail Adresse</label>
-        <input type="email" id="email_addr" name="email_addr" placeholder="max.mustermann@mustermail.de" required>
-
-        <label>E-Mail Adresse wiederholen</label>
-        <input type="email" id="repeat_email_addr" name="repeat_email_addr" placeholder="max.mustermann@mustermail.de" required oninput="check(this)">
-
-        <label>Passwort</label>
-        <input type="password" id="passwort"  required>
-
-        <label>Passwort wiederholen</label>
-        <input type="password" id="repeat_passwort"  required oninput="check2(this)">
-
-        <input type="submit" value="Abschicken" />
-
-      </form>
-
-      <script>
-      function check(input) {
-        if (input.value != document.getElementById('email_addr').value) {
-          input.setCustomValidity('Fehler');
-        } else {
-          // wenn der Wert zulässig ist, werden die Felder zurückgesetzt
-          input.setCustomValidity('');
-        }
-      }
-      </script>
-
-      <script>
-      function check2(input) {
-        if (input.value != document.getElementById('passwort').value) {
-          input.setCustomValidity('Fehler');
-        } else {
-          // wenn der Wert zulässig ist, werden die Felder zurückgesetzt
-          input.setCustomValidity('');
-        }
-      }
-      </script>
-
-
-
-    </div>
-
-    <div id="bottom">
-
-        <p id="copy">&copy; BuyVision</p>
-
-    </div>
-
-</body>
-
+          
+        <form> 
+            
+         <fieldset class="form-group">
+            <label for="exampleInputEmail1">Geburtsdatum</label>
+            <input type="date" class="form-control" id="inputDay">
+          </fieldset>
+                
+          <fieldset class="form-group">
+            <label for="exampleInputEmail1">Email Adresse</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="max.mustermann@example.com">
+          </fieldset>
+                
+          <fieldset class="form-group">
+            <label for="exampleInputPassword1">Passwort</label>
+            <input type="password" class="form-control" id="inputPasswort" placeholder="Passwort">
+          </fieldset>
+            
+          <fieldset class="form-group">
+            <label for="exampleInputPassword1">Passwort bestätigen</label>
+            <input type="password" class="form-control" id="inputPasswortConfirm" placeholder="Passwort">
+          </fieldset>
+               
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Ich möchte den kostenlosen Newsletter erhalten
+            </label>
+          </div>
+            
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" id="agb"> Ich habe die AGB gelesen und verstanden
+            </label>
+          </div>
+                
+          <button id="sub"type="submit" class="btn btn-primary">Submit</button>
+                
+        </form>
+          
+      </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+      
+    <script type="text/javascript">
+      
+        $("#submitButton").click(function() {
+                
+                var errorMessage = "";
+                var fieldsMissing = "";
+                
+                if ($("#inputName").val() == "") {
+                    
+                    fieldsMissing += "<br>Name";
+                    
+                }
+                
+                if ($("#inputNachname").val() == "") {
+                    
+                    fieldsMissing += "<br>Nachname";
+                    
+                }
+            
+                if ($("#inputStraße").val() == "") {
+                    
+                    fieldsMissing += "<br>Straße";
+                    
+                }
+            
+                if ($("#inputHausnummer").val() == "") {
+                    
+                    fieldsMissing += "<br>Hausnummer";
+                    
+                }
+            
+                if ($("#inputPLZ").val() == "") {
+                    
+                    fieldsMissing += "<br>Postleitzahl";
+                    
+                }
+            
+                if ($("#inputOrt").val() == "") {
+                    
+                    fieldsMissing += "<br>Ort";
+                    
+                }
+            
+                if ($("#inputDay").val() == "") {
+                    
+                    fieldsMissing += "<br>Geburtsdatum";
+                    
+                }
+            
+                if ($("#inputEmail").val() == "") {
+                    
+                    fieldsMissing += "<br>Email";
+                    
+                }
+                
+                if ($("#inputPasswort").val() == "") {
+                    
+                    fieldsMissing += "<br>Passwort";
+                    
+                }
+                
+                if ($("#inputPasswortConfirm").val() == "") {
+                    
+                    fieldsMissing += "<br>Passwortbestätigung";
+                    
+                }
+            
+                if ($("#agb").val() == "") {
+                    
+                    fieldsMissing += "<br>AGB Bestätigung";
+                    
+                }
+                
+                if (fieldsMissing != "") {
+                    
+                    errorMessage += "<p>The following field(s) are missing:" + fieldsMissing;
+                    
+                }
+                
+                
+                if ($("#inputPasswort").val() != $("#inputPasswortConfirm").val()) {
+                    
+                    errorMessage += "<p>Die Passwörter sind nicht identisch</p>";
+                    
+                }
+                
+                if (errorMessage != "") {
+                    
+                    $("#errorMessage").html(errorMessage);
+                    
+                } else {
+                    
+                    $("#successMessage").show();
+                    $("#errorMessage").hide();
+                    
+                }
+                
+            });
+      
+    </script>
+      
+  </body>
+    
 </html>
